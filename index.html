@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>🗿 Sigma Reply</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Tahoma,Arial,sans-serif;
+    color:#fff;
+    background:
+    radial-gradient(circle at top,#4b0000,#130000 30%,#050505 75%);
+}
+
+.container{
+    width:min(850px,94%);
+    margin:auto;
+    padding:30px 0 50px;
+}
+
+.hero{
+    text-align:center;
+    padding-bottom:25px;
+}
+
+.logo{
+    font-size:65px;
+    filter:drop-shadow(0 0 20px red);
+}
+
+h1{
+    margin:5px 0;
+    font-size:clamp(42px,9vw,75px);
+    font-weight:1000;
+}
+
+.subtitle{
+    color:#888;
+    line-height:2;
+}
+
+.card{
+    background:rgba(10,10,10,.96);
+    border:1px solid #292929;
+    border-radius:25px;
+    padding:22px;
+    margin-bottom:18px;
+    box-shadow:0 20px 70px rgba(0,0,0,.65);
+}
+
+.title{
+    color:#aaa;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+textarea{
+    width:100%;
+    min-height:150px;
+    resize:vertical;
+    padding:17px;
+    border-radius:17px;
+    border:1px solid #333;
+    outline:none;
+    background:#050505;
+    color:white;
+    font-family:Tahoma,Arial,sans-serif;
+    font-size:16px;
+    line-height:2;
+}
+
+textarea:focus{
+    border-color:#e00000;
+    box-shadow:0 0 25px rgba(255,0,0,.15);
+}
+
+.styles{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:18px;
+}
+
+.style{
+    position:relative;
+}
+
+.style input{
+    position:absolute;
+    opacity:0;
+}
+
+.style label{
+    display:block;
+    padding:14px 8px;
+    text-align:center;
+    background:#111;
+    border:1px solid #303030;
+    border-radius:14px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.style label:hover{
+    transform:translateY(-2px);
+    border-color:#777;
+}
+
+.style input:checked + label{
+    background:#260606;
+    border-color:#ff2222;
+    box-shadow:0 0 18px rgba(255,0,0,.15);
+}
+
+button{
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+.generate{
+    width:100%;
+    margin-top:18px;
+    padding:17px;
+    border:0;
+    border-radius:16px;
+    background:linear-gradient(135deg,#ff3030,#800000);
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.generate:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 35px rgba(255,0,0,.3);
+}
+
+.result{
+    display:none;
+}
+
+.status{
+    color:#777;
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.answer{
+    background:#060606;
+    border:1px solid #292929;
+    border-radius:18px;
+    padding:20px;
+    font-size:21px;
+    font-weight:bold;
+    line-height:2;
+}
+
+.actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:12px;
+}
+
+.action{
+    padding:13px;
+    background:#151515;
+    color:white;
+    border:1px solid #333;
+    border-radius:13px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.action:hover{
+    background:#222;
+}
+
+.creator{
+    text-align:center;
+}
+
+.creator a{
+    color:#ff3333;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.footer{
+    text-align:center;
+    color:#444;
+    font-size:11px;
+    margin-top:20px;
+}
+
+@media(max-width:600px){
+    .styles{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:420px){
+    .card{
+        padding:16px;
+    }
+
+    .answer{
+        font-size:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="hero">
+
+<div class="logo">🗿</div>
+
+<h1>Sigma Reply</h1>
+
+<div class="subtitle">
+💬 حرف طرف مقابل را بنویس
+<br>
+🧠 هوش مصنوعی منظورش را می‌فهمد
+<br>
+⚡ یک جواب حاضرجواب و مرتبط می‌سازد
+</div>
+
+</header>
+
+<section class="card">
+
+<div class="title">💬 حرف طرف مقابل</div>
+
+<textarea
+id="message"
+placeholder="مثلاً: فکر کردی خیلی خفنی؟"
+></textarea>
+
+<div class="title" style="margin-top:20px">
+🎭 سبک حاضرجوابی
+</div>
+
+<div class="styles">
+
+<div class="style">
+<input type="radio" name="style" value="sigma" id="sigma" checked>
+<label for="sigma">🗿 سیگما</label>
+</div>
+
+<div class="style">
+<input type="radio" name="style" value="kind" id="kind">
+<label for="kind">❤️ مهربون</label>
+</div>
+
+<div class="style">
+<input type="radio" name="style" value="funny" id="funny">
+<label for="funny">😂 خنده‌دار</label>
+</div>
+
+<div class="style">
+<input type="radio" name="style" value="cool" id="cool">
+<label for="cool">😎 خفن</label>
+</div>
+
+<div class="style">
+<input type="radio" name="style" value="polite" id="polite">
+<label for="polite">🤝 محترمانه</label>
+</div>
+
+<div class="style">
+<input type="radio" name="style" value="short" id="short">
+<label for="short">⚡ کوتاه</label>
+</div>
+
+</div>
+
+<button class="generate" onclick="generateReply()">
+🗿 حاضرجوابی کن
+</button>
+
+</section>
+
+<section class="card result" id="result">
+
+<div class="status" id="status">
+🧠 در حال تحلیل...
+</div>
+
+<div class="answer" id="answer"></div>
+
+<div class="actions">
+
+<button class="action" onclick="copyAnswer()">
+📋 کپی جواب
+</button>
+
+<button class="action" onclick="generateReply()">
+🎲 حاضرجوابی جدید
+</button>
+
+</div>
+
+</section>
+
+<section class="card creator">
+
+<div class="title">🛠️ سازنده</div>
+
+<div>
+👑 کــانــال رســمــی مــمــد
+</div>
+
+<div style="margin-top:8px">
+👤
+<a href="https://eitaa.com/Rick0O" target="_blank">
+@Rick0O
+</a>
+</div>
+
+<div style="margin-top:8px">
+📢
+<a href="https://eitaa.com/MAMAD8S" target="_blank">
+کانال رسمی ممد
+</a>
+</div>
+
+</section>
+
+<div class="footer">
+🗿 Sigma Reply — AI Comeback Generator
+</div>
+
+</div>
+
+<script>
+
+async function generateReply(){
+
+    const message =
+        document.getElementById("message").value.trim();
+
+    if(!message){
+        alert("🗿 اول حرف طرف مقابل رو بنویس!");
+        return;
+    }
+
+    const style =
+        document.querySelector(
+            'input[name="style"]:checked'
+        ).value;
+
+    const result =
+        document.getElementById("result");
+
+    const answer =
+        document.getElementById("answer");
+
+    const status =
+        document.getElementById("status");
+
+    result.style.display = "block";
+
+    status.textContent =
+        "🧠 دارم منظور پیام رو می‌فهمم...";
+
+    answer.textContent =
+        "⏳ در حال ساخت حاضرجوابی...";
+
+    result.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
+    });
+
+    try{
+
+        const response =
+            await fetch("/api/reply",{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "application/json"
+                },
+
+                body:JSON.stringify({
+                    message:message,
+                    style:style
+                })
+
+            });
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+            throw new Error(
+                data.error || "خطای سرور"
+            );
+        }
+
+        answer.textContent =
+            data.answer;
+
+        status.textContent =
+            "⚡ حاضرجوابی مخصوص همین پیام";
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        status.textContent = "❌ خطا";
+
+        answer.textContent =
+            "اتصال به هوش مصنوعی برقرار نشد.";
+
+    }
+}
+
+
+async function copyAnswer(){
+
+    const text =
+        document.getElementById("answer").textContent;
+
+    if(!text) return;
+
+    try{
+
+        await navigator.clipboard.writeText(text);
+
+        alert("✅ جواب کپی شد!");
+
+    }
+
+    catch{
+
+        alert("❌ کپی خودکار انجام نشد!");
+
+    }
+}
+
+
+document
+.getElementById("message")
+.addEventListener("keydown",function(event){
+
+    if(event.ctrlKey && event.key === "Enter"){
+        generateReply();
+    }
+
+});
+
+</script>
+
+</body>
+  </html>
